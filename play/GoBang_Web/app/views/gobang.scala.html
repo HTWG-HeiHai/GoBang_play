@@ -1,15 +1,15 @@
 @(title: String)
-
 <!DOCTYPE html>
-
-<html lang="en">
+<html ng-app>
     <head>
         <title>@title</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
     </head>
     <body>
         This is the startpage of our game.
         <br><br>
-        <a href="./gobang/game">Click here</a> to start.
-
+        Name:<input ng-model="name" type="text"/>
+        <br><br>
+        Hello {{name}}, <a href="./gobang/game">click here</a> to start.
     </body>
 </html>
