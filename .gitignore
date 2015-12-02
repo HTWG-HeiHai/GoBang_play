@@ -1,0 +1,14 @@
+# Ignore Play! working directory #
+/play/GoBang_Web/bin/
+/play/GoBang_Web//db
+/play/GoBang_Web/lib/
+/play/GoBang_Web/logs/
+/play/GoBang_Web/modules
+/play/GoBang_Web/project/target
+/play/GoBang_Web/target
+/play/GoBang_Web/tmp/
+/play/GoBang_Web/test-result
+/play/GoBang_Web/server.pid
+/play/GoBang_Web/*.eml
+/play/GoBang_Web//dist/
+/play/GoBang_Web/.cache
