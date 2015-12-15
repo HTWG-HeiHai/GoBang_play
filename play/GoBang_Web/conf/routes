@@ -4,10 +4,11 @@
 
 # Home page
 GET     /                           controllers.Application.gobang()
-GET		/test/:name					controllers.Application.test(name: String)
+
 GET		/gobang/game				controllers.Application.game()
 GET		/gobang						controllers.Application.gobang()
 GET     /gobang/set/:x/:y		    controllers.Application.setToken(x: Int, y: Int)
+GET		/websocket					controllers.Application.webSocket()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
