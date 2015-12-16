@@ -3,13 +3,25 @@ $(function() {
 	Server = new FancyWebSocket('ws://127.0.0.1:9000/websocket');
 
 	$('.btn-lg').click(function() {
-		checkField(this.id);
+		command(this.id);
 	});
 	
-	Server.bind('message', function(setToken) {
-		field = setToken.split("-")[0];
-		color = setToken.split("-")[1];
-		updateField(field, color);
+	$('#new_round').click(function() {
+		command("newRound");
+	});
+	
+	Server.bind('message', function(field) {
+		var jsonField = JSON.parse(field);
+
+		for(var i = 0; i < jsonField.length; ++i) {
+			for(var j = 0; j < jsonField.length; ++j) {
+				if(jsonField[i][j].name != 'none') {
+					updateField(jsonField[i][j].id, jsonField[i][j].name);
+				} else {
+					updateField(jsonField[i][j].id, 'white');
+				}
+			}
+		}
 	});
 
 	Server.connect();
@@ -33,8 +45,15 @@ var changeField = function(x, y) {
 
 var Server;
 
-function checkField(source) {
-	Server.send('setField', source);
+//function checkField(source) {
+//	jsonSource = {"command": source};
+////	console.log(JSON.stringify(jsonSource));
+//	Server.send('setField', JSON.stringify(jsonSource));
+//};
+
+function command(command) {
+	jsonCommand = {"command": command};
+	Server.send('command', JSON.stringify(jsonCommand));
 };
 
 function updateField(source, color) {
