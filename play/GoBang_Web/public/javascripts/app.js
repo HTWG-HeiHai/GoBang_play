@@ -13,12 +13,15 @@ $(function() {
 	Server.bind('message', function(field) {
 		var jsonField = JSON.parse(field);
 
-		for(var i = 0; i < jsonField.length; ++i) {
-			for(var j = 0; j < jsonField.length; ++j) {
-				if(jsonField[i][j].name != 'none') {
-					updateField(jsonField[i][j].id, jsonField[i][j].name);
+		document.getElementById("p1wins").textContent = jsonField.p1wins
+		document.getElementById("p2wins").textContent = jsonField.p2wins
+
+		for(var i = 0; i < jsonField.field.length; ++i) {
+			for(var j = 0; j < jsonField.field.length; ++j) {
+				if(jsonField.field[i][j].name != 'none') {
+					updateField(jsonField.field[i][j].id, jsonField.field[i][j].name);
 				} else {
-					updateField(jsonField[i][j].id, 'white');
+					updateField(jsonField.field[i][j].id, 'white');
 				}
 			}
 		}
